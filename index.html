@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coffre au trésor</title>
+    <style>
+        .coffre {
+            /* Styles pour le coffre fermé */
+            width: 200px;
+            height: 150px;
+            background-image: url('coffre_ferme.png'); /* Image du coffre fermé */
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: transform 1s ease-in-out;
+        }
+
+        .coffre.ouvert {
+            /* L'animation se déclenche ici */
+            background-image: url('coffre_ouvert.png'); /* Image du coffre ouvert */
+            transform: scale(1.2); /* Petit zoom pour l'effet */
+        }
+    </style>
+</head>
+<body>
+    <h1>Entrez le code pour ouvrir le coffre</h1>
+    <input type="text" id="code-input" placeholder="Code secret">
+    <button onclick="verifierCode()">Ouvrir</button>
+    <div id="coffre-animation" class="coffre"></div>
+
+    <script>
+        function verifierCode() {
+            const codeCorrect = "TREASURE"; // Votre code secret
+            const codeEntre = document.getElementById('code-input').value.toUpperCase(); // Convertir en majuscules
+
+            if (codeEntre === codeCorrect) {
+                document.getElementById('coffre-animation').classList.add('ouvert');
+                alert("Félicitations ! Le coffre s'ouvre !");
+                // Vous pouvez ajouter du code ici pour afficher le message final
+            } else {
+                alert("Code incorrect, réessayez.");
+            }
+        }
+    </script>
+</body>
+</html>
